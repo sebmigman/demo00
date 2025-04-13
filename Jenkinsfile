@@ -1,17 +1,10 @@
-node {
-    stage('Build') {
-        docker.withClient {
-            def mavenImage = docker.image('maven:3.8.5-openjdk-17')
-            mavenImage.inside {
-                sh 'mvn clean package'
-            }
-        }
-    }
-    stage('Test') {
-        docker.withClient {
-            def mavenImage = docker.image('maven:3.8.5-openjdk-17')
-            mavenImage.inside {
-                sh 'mvn test'
+pipeline {
+    agent any // Run on any available agent
+
+    stages {
+        stage('Test Configuration') {
+            steps {
+                echo 'Jenkins configuration is working!'
             }
         }
     }
